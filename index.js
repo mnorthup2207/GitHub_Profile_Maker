@@ -2,6 +2,11 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const axios = require('axios');
 const util = require("util");
+const pdf = require('html-pdf');
+
+const html = fs.readFileSync('./index.html', 'utf8');
+const options = { format: 'Letter' };
+ 
 
 const colors = {
     green: {
@@ -33,7 +38,7 @@ const colors = {
 const writeFileAsync = util.promisify(fs.writeFile)
 
 
-return inquirer.prompt([
+inquirer.prompt([
     {
         type: "input",
         message: "What is your GitHub UserName?",
@@ -244,6 +249,10 @@ return inquirer.prompt([
                 </html>`
             }
             writeFileAsync("index.html", generateHTML(data))
+            pdf.create(html, options).toFile('./GitHub_Profile.pdf', function(err, res) {
+                if (err) return console.log(err);
+                console.log(res); // { filename: '/app/businesscard.pdf' }
+              });
         })
 });
 
