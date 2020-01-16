@@ -4,7 +4,7 @@ const axios = require('axios');
 const util = require("util");
 const pdf = require('html-pdf');
 
-const html = fs.readFileSync('./index.html', 'utf8');
+
 const options = { format: 'Letter' };
  
 
@@ -95,7 +95,7 @@ inquirer.prompt([
                     -webkit-print-color-adjust: exact !important;
                     font-family: 'Cabin', sans-serif;
                     }
-                    main {
+                    .main {
                     background-color: #E9EDEE;
                     height: auto;
                     padding-top: 30px;
@@ -208,6 +208,7 @@ inquirer.prompt([
                 </style>                
                 </head>
                 <body>
+                <div class="container">
                     <div class="wrapper">
                         <div class="photo-header">
                             <img src="${avatar_url}" alt="picture of ${name}">
@@ -219,9 +220,8 @@ inquirer.prompt([
                                 <a class="links-nav" href="${blog}"><i class="fas fa-blog"> Blog</i></a>
                             </div>
                         </div>
-                        <div class="container">
-                            <h2>${bio}</h2>
-                        </div>
+                    </div>    
+                    <h5>${bio}</h5>
                         <div class="container">                       
                             <div class="row">
                                 <div class="col card">
@@ -243,12 +243,13 @@ inquirer.prompt([
                                     <h5>${following}</h5>
                                 </div>
                             </div> 
-                        </div>
-                    </div>    
+                        </div> 
+                    </div>      
                 </body>
                 </html>`
             }
-            writeFileAsync("index.html", generateHTML(data))
+
+            const html = generateHTML(data);
             pdf.create(html, options).toFile('./GitHub_Profile.pdf', function(err, res) {
                 if (err) return console.log(err);
                 console.log(res); // { filename: '/app/businesscard.pdf' }
