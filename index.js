@@ -47,6 +47,7 @@ return inquirer.prompt([
     }
 ]).then(data => {
     const username = data.username
+    const dataColor = data.color
     const queryUrl = `https://api.github.com/users/${username}`;
     axios
         .get(queryUrl)
@@ -81,7 +82,7 @@ return inquirer.prompt([
                     height: 100%;
                     }
                     .wrapper {
-                    background-color: ${colors[data.color].wrapperBackground};
+                    background-color: ${colors[dataColor].wrapperBackground};
                     padding-top: 100px;
                     }
                     body {
@@ -123,8 +124,8 @@ return inquirer.prompt([
                     display: flex;
                     justify-content: center;
                     flex-wrap: wrap;
-                    background-color: ${colors[data.color].headerBackground};
-                    color: ${colors[data.color].headerColor};
+                    background-color: ${colors[dataColor].headerBackground};
+                    color: ${colors[dataColor].headerColor};
                     padding: 10px;
                     width: 95%;
                     border-radius: 6px;
@@ -135,7 +136,7 @@ return inquirer.prompt([
                     border-radius: 50%;
                     object-fit: cover;
                     margin-top: -75px;
-                    border: 6px solid ${colors[data.color].photoBorderColor};
+                    border: 6px solid ${colors[dataColor].photoBorderColor};
                     box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
                     }
                     .photo-header h1, .photo-header h2 {
@@ -178,8 +179,8 @@ return inquirer.prompt([
                     .card {
                     padding: 20px;
                     border-radius: 6px;
-                    background-color: ${colors[data.color].headerBackground};
-                    color: ${colors[data.color].headerColor};
+                    background-color: ${colors[dataColor].headerBackground};
+                    color: ${colors[dataColor].headerColor};
                     margin: 20px;
                     }
                     
@@ -202,21 +203,42 @@ return inquirer.prompt([
                 </style>                
                 </head>
                 <body>
-                    <div class="container">
-                        <div class="wrapper">
+                    <div class="wrapper">
+                        <div class="photo-header">
                             <img src="${avatar_url}" alt="picture of ${name}">
                             <h1>Hi</h1>
                             <h1>My Name is ${name}</h1>
-                            <div class="row">
-                                <h5><a href="http://maps.google.com/maps?q=${location.split(' ').join('+')}"><i class="fas fa-map-marked-alt"> ${location}</i></a></h5>
-                                <h5><a href="${html_url}"><i class="fab fa-github"> GitHub</i></a></h5>
-                                <h5><a href="${blog}"><i class="fas fa-blog"> Blog</i></a></h5>
+                            <div class="nav-link">
+                                <a class="links-nav" href="http://maps.google.com/maps?q=${location.split(' ').join('+')}"><i class="fas fa-map-marked-alt"> ${location}</i></a>
+                                <a class="links-nav" href="${html_url}"><i class="fab fa-github"> GitHub</i></a>
+                                <a class="links-nav" href="${blog}"><i class="fas fa-blog"> Blog</i></a>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="container">
                             <h2>${bio}</h2>
                         </div>
-                        
+                        <div class="container">                       
+                            <div class="row">
+                                <div class="col card">
+                                    <h2>Public Repositories</h2>
+                                    <h5>${public_repos}</h5>
+                                </div>
+                                <div class="col card">
+                                    <h2>Followers</h2>
+                                    <h5>${followers}</h5>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col card">
+                                    <h2>GitHub Stars</h2>
+                                    <h5>${public_gists}</h5>
+                                </div>
+                                <div class="col card">
+                                    <h2>Following</h2>
+                                    <h5>${following}</h5>
+                                </div>
+                            </div> 
+                        </div>
                     </div>    
                 </body>
                 </html>`
