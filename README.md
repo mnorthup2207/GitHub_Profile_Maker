@@ -19,10 +19,15 @@
 
 ## List of links/dependencies
 
+![inquirer-npm](https://www.npmjs.com/package/inquirer/v/0.2.3)
+![fs-js](https://www.npmjs.com/package/fs-js)
+![axios](https://www.npmjs.com/package/axios)
+![util](https://www.npmjs.com/package/util)
+![html-pdf](https://www.npmjs.com/package/html-pdf)
 
 ## Credits
 Used font awesome for the save icon.
 https://fontawesome.com/license
 
-## Link to Deployed Product
+
 
