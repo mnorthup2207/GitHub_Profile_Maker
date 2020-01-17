@@ -69,7 +69,8 @@ inquirer.prompt([
                 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
                 <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
-                <title>Document</title>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                <title>${username}</title>
                 <style>
                     @page {
                         margin: 0;
@@ -141,10 +142,11 @@ inquirer.prompt([
                     border-radius: 50%;
                     object-fit: cover;
                     margin-top: -75px;
+                    margin-left: 35%;
                     border: 6px solid ${colors[dataColor].photoBorderColor};
                     box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
                     }
-                    .photo-header h1, .photo-header h2 {
+                    .photo-header h1, .photo-header h2, .photo-header a  {
                     width: 100%;
                     text-align: center;
                     }
@@ -188,9 +190,11 @@ inquirer.prompt([
                     color: ${colors[dataColor].headerColor};
                     margin: 20px;
                     }
-                    
+                    .links {
+
+                    }
                     .col {
-                    flex: 1;
+                    
                     text-align: center;
                     }
 
@@ -214,43 +218,46 @@ inquirer.prompt([
                             <img src="${avatar_url}" alt="picture of ${name}">
                             <h1>Hi</h1>
                             <h1>My Name is ${name}</h1>
-                            <div class="nav-link">
-                                <a class="links-nav" href="http://maps.google.com/maps?q=${location.split(' ').join('+')}"><i class="fas fa-map-marked-alt"> ${location}</i></a>
-                                <a class="links-nav" href="${html_url}"><i class="fab fa-github"> GitHub</i></a>
-                                <a class="links-nav" href="${blog}"><i class="fas fa-blog"> Blog</i></a>
+                            <div class="col">
+                                <a class="links" target="_blank" href="http://maps.google.com/maps?q=${location.split(' ').join('+')}"><i class="fas fa-map-marked-alt"> ${location}</i></a>
+                                <a class="links" target="_blank" href="${html_url}"><i class="fab fa-github"> GitHub</i></a>
+                                <a class="links" target="_blank" href="${blog}"><i class="fas fa-blog"> Blog</i></a>
                             </div>
                         </div>
+                    </div> 
+                    <div class="container">   
+                        <h5>${bio}</h5>
                     </div>    
-                    <h5>${bio}</h5>
-                        <div class="container">                       
-                            <div class="row">
-                                <div class="col card">
-                                    <h2>Public Repositories</h2>
-                                    <h5>${public_repos}</h5>
-                                </div>
-                                <div class="col card">
-                                    <h2>Followers</h2>
-                                    <h5>${followers}</h5>
-                                </div>
-                            </div> 
-                            <div class="row">
-                                <div class="col card">
-                                    <h2>GitHub Stars</h2>
-                                    <h5>${public_gists}</h5>
-                                </div>
-                                <div class="col card">
-                                    <h2>Following</h2>
-                                    <h5>${following}</h5>
-                                </div>
-                            </div> 
+                            
+                        <div class="row">
+                            <div class="col card">
+                                <h2>Public Repositories</h2>
+                                <h5>${public_repos}</h5>
+                            </div>
+                            <div class="col card">
+                                <h2>Followers</h2>
+                                <h5>${followers}</h5>
+                            </div>
                         </div> 
-                    </div>      
+                        <div class="row">
+                            <div class="col card">
+                                <h2>GitHub Stars</h2>
+                                <h5>${public_gists}</h5>
+                            </div>
+                            <div class="col card">
+                                <h2>Following</h2>
+                                <h5>${following}</h5>
+                            </div>
+                        </div> 
+                      
+                <footer class="wrapper"></footer>
+                </div>        
                 </body>
                 </html>`
             }
 
             const html = generateHTML(data);
-            pdf.create(html, options).toFile('./GitHub_Profile.pdf', function(err, res) {
+            pdf.create(html, options).toFile(`./${username}_GitHub.pdf`, function(err, res) {
                 if (err) return console.log(err);
                 console.log(res); // { filename: '/app/businesscard.pdf' }
               });
