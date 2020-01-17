@@ -191,7 +191,7 @@ inquirer.prompt([
                     margin: 20px;
                     }
                     .links {
-
+                        margin-left: 25%;
                     }
                     .col {
                     
@@ -218,10 +218,10 @@ inquirer.prompt([
                             <img src="${avatar_url}" alt="picture of ${name}">
                             <h1>Hi</h1>
                             <h1>My Name is ${name}</h1>
-                            <div class="col">
-                                <a class="links" target="_blank" href="http://maps.google.com/maps?q=${location.split(' ').join('+')}"><i class="fas fa-map-marked-alt"> ${location}</i></a>
-                                <a class="links" target="_blank" href="${html_url}"><i class="fab fa-github"> GitHub</i></a>
-                                <a class="links" target="_blank" href="${blog}"><i class="fas fa-blog"> Blog</i></a>
+                            <div class="row links">
+                                <a class="col" target="_blank" href="http://maps.google.com/maps?q=${location.split(' ').join('+')}"><i class="fas fa-map-marked-alt"> ${location}</i></a>
+                                <a class="col" target="_blank" href="${html_url}"><i class="fab fa-github"> GitHub</i></a>
+                                <a class="col" target="_blank" href="${blog}"><i class="fas fa-blog"> Blog</i></a>
                             </div>
                         </div>
                     </div> 
