@@ -1,0 +1,25 @@
+{
+  "name": "github_profile_maker",
+  "version": "1.0.0",
+  "description": "- A command-line application that dynamically generates a PDF profile from a GitHub username. The application can be invoked with the following command:",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "html-pdf": "^2.2.0",
+    "inquirer": "^7.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnorthup2207/GitHub_Profile_Maker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mnorthup2207/GitHub_Profile_Maker/issues"
+  },
+  "homepage": "https://github.com/mnorthup2207/GitHub_Profile_Maker#readme"
+}
