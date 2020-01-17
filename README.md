@@ -9,7 +9,7 @@
 
 - The user is then prompted for their GitHub username and favorite color
 
-![mp4](assets/image/commandLineDemo.mp4)
+![Demo](https://drive.google.com/file/d/1vuMonpSy5S4pe7fCGkYhlF4Q-ylaOJ-B/preview)
  
 - A PDF is then generated with the users name, bio, location, blog, followers, following, stars, and repo amount.
 - The user will need to use the package.json to "npm install" all dependencies for this application.
